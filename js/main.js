@@ -16,10 +16,17 @@
 // 6) Handle a player clicking the replay button
 
 
-let player1= 0;
-let player2= X;
+let player1= "O";
+let player2= "X";
 
-document.querySelectorAll("TD").addEventListener("click");
+var PlayerTurn = function() {
+
+}
+
+document.querySelectorAll("table").addEventListener("click", function(evt) {
+  let target = evt.target;
+  target.ba
+});
 
 let index0 = document.getElementById(idx0)
 let index1 = document.getElementById(idx1)
@@ -31,7 +38,6 @@ let index6 = document.getElementById(idx6)
 let index7 = document.getElementById(idx7)
 let index8 = document.getElementById(idx8)
 
-var array= [0,1,2,3,4,5,6,7,8];
 
 // if ((array[0] === array[1] === array[2]) || (array[3] === array[4] === array[5]) || (array[6] === array[7] === array[8])) {
 //   console.log('Horizontal Win!');
