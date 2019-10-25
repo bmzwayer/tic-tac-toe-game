@@ -19,14 +19,26 @@
 let player1= "O";
 let player2= "X";
 
-var PlayerTurn = function() {
+// var PlayerTurn = function() {
 
+// }
+
+// document.querySelectorAll("table").addEventListener("click", function(evt) {
+//   let target = evt.target;
+//   console.log(evt); 
+// //   target.ba
+// });
+
+var table = document.getElementsByClassName('gameTable');
+var box = document.querySelector('TD');
+
+handleClick()
+
+table.addEventListener("click", handleClick);
+function handleClick(evt) {
+    console.log(evt);
 }
 
-document.querySelectorAll("table").addEventListener("click", function(evt) {
-  let target = evt.target;
-  target.ba
-});
 
 let index0 = document.getElementById(idx0)
 let index1 = document.getElementById(idx1)
@@ -47,12 +59,12 @@ let index8 = document.getElementById(idx8)
 //   console.log('Diagonal Win!');
 // };
 
-if ((index0 === index1 === index2) || (index3 === index4 === index5) || (index6 === index7 ===index8)){
-    console.log('Horizontal Win!');
-} 
-if ((index0 === index3 === index6) || (index1 === index4 === index7) || (index2 === index5 ===index8)){
-    console.log('Vertical Win!');
-}
-if ((index0 === index4 === index8) || (index6 === index4 ===index2)){
-    console.log('Diagonal Win!');
-}
+// if ((index0 === index1 === index2) || (index3 === index4 === index5) || (index6 === index7 ===index8)){
+//     console.log('Horizontal Win!');
+// } 
+// if ((index0 === index3 === index6) || (index1 === index4 === index7) || (index2 === index5 ===index8)){
+//     console.log('Vertical Win!');
+// }
+// if ((index0 === index4 === index8) || (index6 === index4 ===index2)){
+//     console.log('Diagonal Win!');
+// }
