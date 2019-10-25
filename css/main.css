@@ -11,3 +11,11 @@ table {
     width: 100%;
     margin: 40px;
 }
+
+TD {
+    border: solid;
+    margin: 0;
+}
+nav {
+    display: flex;
+}
