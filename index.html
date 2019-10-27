@@ -6,31 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="css/main.css">
+    <script defer src="js/main.js"></script>
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
-    <script src="js/main.js"></script>
-    <table class ="gameTable">
-            <TR>
-               <TD id="idx0">0</TD>
-               <TD id="idx1">1</TD>
-               <TD id="idx2">2</TD>
-            </TR>
-            <TR>
-               <TD id="idx3">3</TD>
-               <TD id="idx4">4</TD>
-               <TD id="idx5">5</TD>
-            </TR>
-            <TR>
-               <TD id="idx6">6</TD>
-               <TD id="idx7">7</TD>
-               <TD id="idx8">8</TD>
-            </TR>
-        </table>
+    <div id="gameboard">
+               <div class="box" id="idx0">0</div>
+               <div class="box" id="idx1">1</div>
+               <div class="box" id="idx2">2</div>
+               <div class="box" id="idx3">3</div>
+               <div class="box" id="idx4">4</div>
+               <div class="box" id="idx5">5</div>
+               <div class="box" id="idx6">6</div>
+               <div class="box" id="idx7">7</div>
+               <div class="box" id="idx8">8</div>
+    </div>
         <nav>
-            <p id="firstPlayer">Player 1</p>
-            <p id="secondPlayer">Player 2</p>
+            <button class="player" id="playerX">Player X</button>
+            <button class="player" id="playerO">Player O</button>
         </nav>
+        <div>Player Turn: </div>
         <button>Reset Board</button>
 </body>
 </html>

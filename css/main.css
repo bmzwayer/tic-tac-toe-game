@@ -6,15 +6,18 @@ body {
     margin: 0 auto;
 }
 
-table {
+#gameboard {
     font-size: 50px;
     width: 100%;
-    margin: 40px;
+    margin: auto;
 }
 
-TD {
-    border: solid;
+.box {
+    width: 100px;
+    height: 100px;
+    float: left;
     margin: 0;
+    padding: 0;
 }
 nav {
     display: flex;

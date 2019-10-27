@@ -29,15 +29,35 @@ let player2= "X";
 // //   target.ba
 // });
 
-var table = document.getElementsByClassName('gameTable');
-var box = document.querySelector('TD');
+// var table = document.getElementsByClassName('gameTable');
+// var box = document.querySelector('TD');
 
-handleClick()
+// handleClick();
 
-table.addEventListener("click", handleClick);
-function handleClick(evt) {
-    console.log(evt);
-}
+// table.addEventListener("click", handleClick);
+// function handleClick(evt) {
+//     console.log(evt);
+// }
+
+const btn = document.querySelector('button');
+ btn.addEventListener('click', function(evt) {
+   // testing!
+   console.log(evt);  
+ });
+
+// const box = document.getElementsByClassName("boxes");
+
+// box.addEventListener('click', function(evt) {
+//     console.log(evt);
+// });
+
+document.querySelector('table')
+   .addEventListener('click', handleClick);
+ 
+ function handleClick(evt) {
+   console.log(evt);
+ }
+
 
 
 let index0 = document.getElementById(idx0)
