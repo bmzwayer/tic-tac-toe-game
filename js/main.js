@@ -105,18 +105,18 @@ const grid = () => Array.from(document.querySelectorAll(".box"));
 //turn boxid from string to number to get rid of the idx part
 const boxIdx = (boxEl) => Number.parseInt(boxEl.id.replace(".box",""));
 //add array that returns empty boxes- the inner text of elements will be an empty string
-const emptyBox = () => grid().filter(boxEl => boxEl.innerText === "");
+const emptyBox = () => grid().filter(boxEl => boxEl.textContent === "");
 //tells us if the items in the first item of the array are the same (Xs and Os) except for if they are empty
-const isEqual = (arr) => arr.every(boxEl => boxEl.innerText === arr[0] && boxEl.innerText !== "");
+const isEqual = (arr) => arr.every(boxEl => boxEl.textContent === arr[0] && boxEl.textContent !== "");
 
 //finds what box the letter will be put in by the index of the box
-const playerTurn = (index,letter) => grid()[index].innerText = letter;
+const playerTurn = (index,letter) => grid()[index].textContent = letter;
 
 //logging the event
 //const clickEvt = (evt) => console.log(evt.target);
 //first opponent is logging x-- loop?
 const clickEvt = (evt) => {
-  playerTurn(boxIdx(evt.target), "x");
+  playerTurn(boxIdx(evt.target), playerTurn);
 }
 
 //forEach method on the above returned array (b)
