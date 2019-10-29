@@ -4,6 +4,7 @@
 body {
     text-align: center;
     margin: 0 auto;
+    background-color: grey;
 }
 
 #gameboard {
@@ -33,4 +34,7 @@ body {
 }
 nav {
     display: flex;
+}
+button {
+    text-align: center;
 }

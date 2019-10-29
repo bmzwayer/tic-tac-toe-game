@@ -90,38 +90,62 @@
 // }
 
 
-//player 1 and 2
-const playerX = "X";
-const playerO = "O";
+// //player 1 and 2
+// const player1 = ();
+// const player2 = ();
 
-//possible winning combinations
-let winningArray = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[6,4,2],[0,4,8]];
-//(b) return queried array instead of list
-const grid = () => Array.from(document.querySelectorAll(".box"));
+// const playerTurn = ();
+
+// //possible winning combinations
+// let winningArray = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[6,4,2],[0,4,8]];
+// //(b) return queried array instead of list
+// const grid = () => Array.from(document.querySelectorAll(".box"));
 
 
-//logging event 
+// //logging event 
 
-//turn boxid from string to number to get rid of the idx part
-const boxIdx = (boxEl) => Number.parseInt(boxEl.id.replace(".box",""));
-//add array that returns empty boxes- the inner text of elements will be an empty string
-const emptyBox = () => grid().filter(boxEl => boxEl.textContent === "");
-//tells us if the items in the first item of the array are the same (Xs and Os) except for if they are empty
-const isEqual = (arr) => arr.every(boxEl => boxEl.textContent === arr[0] && boxEl.textContent !== "");
+// //turn boxid from string to number to get rid of the idx part
+// const boxIdx = (boxEl) => Number.parseInt(boxEl.id.replace(".box",""));
+// //add array that returns empty boxes- the inner text of elements will be an empty string
+// const emptyBox = () => grid().filter(boxEl => boxEl.textContent === "");
+// //tells us if the items in the first item of the array are the same (Xs and Os) except for if they are empty
+// const isEqual = (arr) => arr.every(boxEl => boxEl.textContent === arr[0] && boxEl.textContent !== "");
 
-//finds what box the letter will be put in by the index of the box
-const playerTurn = (index,letter) => grid()[index].textContent = letter;
+// //finds what box the letter will be put in by the index of the box
+// const playerTurn = (index,playerx => grid()[index].textContent = playerx;
 
-//logging the event
-//const clickEvt = (evt) => console.log(evt.target);
-//first opponent is logging x-- loop?
-const clickEvt = (evt) => {
-  playerTurn(boxIdx(evt.target), playerTurn);
+// //logging the event
+// //const clickEvt = (evt) => console.log(evt.target);
+// //first opponent is logging x-- loop?
+// const clickEvt = (evt) => {
+//   playerTurn(boxIdx(evt.target), playerTurn);
+// }
+
+// //forEach method on the above returned array (b)
+// const listenForClick = () => grid().forEach(boxEl => boxEl.addEventListener("click", clickEvt));
+
+// //call function
+// listenForClick();
+
+const ticTacToe = new TicTacToe();
+ticTacToe.start()
+
+function TicTacToe() {
+const newBoard = new Board();
+const playerOne = new PlayerOne();
+const playerTwo = new PlayerTwo();
+
+this.start = function() {
+
+  }
+} 
+
+function Board() {
+
 }
+function PlayerOne() {
 
-//forEach method on the above returned array (b)
-const listenForClick = () => grid().forEach(boxEl => boxEl.addEventListener("click", clickEvt));
-
-//call function
-listenForClick();
-
+}
+function PlayerTwo() {
+  
+}
