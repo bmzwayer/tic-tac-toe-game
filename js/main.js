@@ -127,25 +127,230 @@
 // //call function
 // listenForClick();
 
-const ticTacToe = new TicTacToe();
-ticTacToe.start()
+// const ticTacToe = new TicTacToe();
+// ticTacToe.start()
 
-function TicTacToe() {
-const newBoard = new Board();
-const playerOne = new PlayerOne();
-const playerTwo = new PlayerTwo();
+// function TicTacToe() {
+// var playerTurn = 0;
+// const newBoard = new Board();
+// const playerOne = new PlayerOne();
 
-this.start = function() {
+// this.start = function() {
+// const config = { childList: true}; //looking for changes in the divs
+// const observe = new MutationObserver(() => playerTurn());
+// newBoard.indexes.forEach((el) => observe.observe(el, config));
+// }
 
-  }
-} 
+// function playerTurn() {
+//   console.log("something happened.")
+// }
+// } 
 
-function Board() {
+// function Board() {
+//   this.indexes = Array.from(document.querySelectorAll('.box'));
+//   console.log(this.indexes);
 
+// }
+// function PlayerOne() {
+
+// }
+// function PlayerTwo() {
+
+// }
+
+// const max_number_plays = 9;
+// const EMPTY = " ";
+// const winCombo = [  
+//     ["one", "two", "three"],
+//     ["four", "five", "six"],
+//     ["seven", "eight", "nine"],
+//     ["one", "four", "seven"],
+//     ["two", "five", "eight"],
+//     ["three", "six", "nine"],
+//     ["one", "five", "nine"],
+//     ["three", "five", "seven"],
+//  ];
+
+
+
+// const playerO = "O";
+// const playerX = "X";
+
+// /*----- app's state (variables) -----*/
+
+// let playLetter = []; let playCount = []; let playCombo = [];
+
+
+// /*----- cached element references -----*/
+// let message = document.getElementById('message');
+// let turn = document.getElementById('turn');
+// let td = document.querySelectorAll('td');
+// let gameBoard = document.getElementById('tictactoe');
+// let turnEl = document.getElementById('turn');
+
+
+// /*----- event listeners -----*/
+
+// document.getElementById('tictactoe')
+//     .addEventListener('click', handleTDClick);
+
+// document.getElementById('replay')
+//     .addEventListener('click', rePlay);
+
+    
+// /*----- functions -----*/
+// // init();
+
+// function handleTDClick(evt) {
+//     let playLetter = document.getElementById(evt.path["0"].id);
+//     playCount.push(evt.target.value);
+//     renderTurnMessage();
+//     if (playLetter.textContent === ("X")) {
+//         return 
+//     } else if (playLetter.textContent === ("O")) {
+//         return 
+//     } 
+//     else if (playCount.length % 2 === 1) {
+//         playLetter.textContent = "X";
+//         console.log(playLetter.textContent);
+//     } else if (playCount.length % 2 === 0) {
+//         playLetter.textContent = "O";
+//         console.log(playLetter.textContent);
+//     // } else if (playLetter.textContent === "X" || "O") {
+//     //  return   
+//     // }
+
+//     }
+//  return   
+// };
+ 
+//     // to resolve:
+//     // alternating message consistent with clicks
+//     // tds disappear when player clicks away from td but in grid section
+    
+
+
+
+// function renderTurnMessage() {
+//     return (playCount.length % 2 ? turnEl.innerHTML = `Your turn: <br> Player O` : turnEl.innerHTML = `Your turn: <br> Player X`)
+// }
+        
+// // create a message for winner
+        
+// // replay button clears the gameboard
+// function rePlay() {
+//     playCount = []; 
+//     td.forEach(function(box) {
+//         box.textContent = EMPTY;
+//     } );
+//     turnEl.innerHTML = `Your turn: <br> Player X`;
+// }
+
+
+// // create separate arrays for O and X position plays
+// // compare with winning count
+// // cannot strictly compare array
+// // create loop to compare values 
+
+// function render() {
+// 	renderHands();
+// 	renderControls();
+// 	if (winner) {
+// 		renderWinnerMessage();
+// 	} else {
+// 		renderTurnMessage();
+// 	}
+// }
+
+var origBoard;
+const playerOne = 'O';
+const playerTwo = 'X';
+const winCombos = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[6, 4, 2]
+]
+
+const boxes = document.querySelectorAll('.box');
+
+startGame();
+
+//adding event listener to the board
+function startGame() {
+	document.querySelector(".endgame")
+	origBoard = Array.from(Array(9).keys());
+	for (var i = 0; i < boxes.length; i++) {
+		boxes[i].innerText = ''; //sqaures that are blank
+		boxes[i].style.removeProperty('background-color');
+		boxes[i].addEventListener('click', turnClick, false);
+	}
 }
-function PlayerOne() {
+//player turn to check 
+function turnClick(square) {
+	if (typeof origBoard[square.target.id] == 'number') {
+		turn(square.target.id, playerOne)
+		if (!checkTie()) turn(bestSpot(), playerTwo);
+	}
+}
+//need to sfigure out how to switch turns to player two
+function turn(squareId, player) {
+	origBoard[squareId] = player;
+	document.getElementById(squareId).innerText = player;
+	let gameWon = checkWin(origBoard, player)
+	if (gameWon) gameOver(gameWon)
+}
+//checking for winner
+function checkWin(board, player) {
+	let plays = board.reduce((a, e, i) => 
+		(e === player) ? a.concat(i) : a, []);
+	let gameWon = null;
+	for (let [index, win] of winCombos.entries()) {
+		if (win.every(elem => plays.indexOf(elem) > -1)) {
+			gameWon = {index: index, player: player};
+			break;
+		}
+	}
+	return gameWon;
+}
 
+function gameOver(gameWon) {
+	for (let index of winCombos[gameWon.index]) {
+		document.getElementById(index).style.backgroundColor =
+			gameWon.player == playerOne ? "grey" : "red";
+	}
+	for (var i = 0; i < boxes.length; i++) {
+		boxes[i].removeEventListener('click', turnClick, false);
+	}
+	declareWinner(gameWon.player == playerOne ? "Congrats, you win!" : "Sorry, you lose.");
+}// display message after player wins
+
+function declareWinner(who) {
+	document.querySelector(".endgame").style.display = "block";
+	document.querySelector(".endgame .text").innerText = who;
 }
-function PlayerTwo() {
-  
+
+function emptySquares() {
+	return origBoard.filter(s => typeof s == 'number');
 }
+
+function bestSpot() {
+	return emptySquares()[0];
+}
+// need to figure out how to make pop up box go away when board resets
+function checkTie() {
+	if (emptySquares().length == 0) {
+		for (var i = 0; i < boxes.length; i++) {
+			boxes[i].style.backgroundColor = "yellow";
+			boxes[i].removeEventListener('click', turnClick, false);
+		}
+		declareWinner("Tie Game!")
+		return true;
+	}
+	return false;
+}
+//this was the hardest thing ive ever done in my life for some reason
